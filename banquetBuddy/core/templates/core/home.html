@@ -1,18 +1,16 @@
 {% extends 'core/base.html' %}
 {% load static %}
-{% block title %}Bienvenido{% endblock %}
 
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                <h1>Bienvenido</h1>
-                <p>Este es un proyecto de prueba para el curso de Django</p>
+            <div class="col-12 text-center">
+                <img src="{% static 'core/images/Logo-transparente.png' %}" alt="Logo" class="logo-image">
             </div>
+            <div class="col-12 text-center mt-4 btn-container">
+                <a href="#" class="btn btn-login mr-3 d-block d-sm-none">Log in</a>
+                <a href="#" class="btn btn-signup ml-3 d-block d-sm-none">Sign up</a>
+            </div>            
         </div>
     </div>
 {% endblock %}
-
-<head>
-    <link rel="stylesheet" href="{% static 'core/styles.css' %}">
-</head>

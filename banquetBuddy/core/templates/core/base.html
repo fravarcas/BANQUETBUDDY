@@ -12,15 +12,14 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light" id="main-navbar">
             <a class="navbar-brand" href="#">
-                <img src="https://www.flaticon.com/svg/static/icons/svg/25/25231.svg" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
-                BanquetBuddy
+                <img src="{% static 'core/images/logo-sin-letras.png' %}" width="50" height="auto" alt="Logo" loading="lazy">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="#">Caterings</a>
@@ -35,11 +34,14 @@
                         <a class="nav-link" href="#">Calendar</a>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <form class="form-inline my-2 my-lg-0" style="position: relative;">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="button" id="search-icon">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <input class="form-control mr-sm-2 search-bar" type="search" placeholder="Search" aria-label="Search" id="search-input">
                 </form>
             </div>
+            
         </nav>
     </header>
 
@@ -54,19 +56,19 @@
                 <div class="col contact-us-container text-center">
                     <a href="#" data-toggle="modal" data-target="#exampleModal" class="text-decoration-none"> 
                         <p class="text-white text-lg">Contact Us</p>
-                        <i class="fas fa-envelope text-white icon-lg"></i>
+                        <i class="fas fa-envelope icon-lg"></i>
                     </a>
                 </div>
                 <div class="col about-us-container text-center">
                     <a href="#" class="text-decoration-none">
                         <p class="text-white text-lg">About Us</p>
-                        <i class="fas fa-info-circle text-white icon-lg"></i>
+                        <i class="fas fa-info-circle icon-lg"></i>
                     </a>
                 </div>                
                 <div class="col socials-container text-center">
-                    <a href="https://www.instagram.com/tuproyecto" target="_blank" class="text-decoration-none">
+                    <a href="#" target="_blank" class="text-decoration-none">
                         <p class="text-white text-lg">Socials</p>
-                        <i class="fab fa-instagram text-white icon-lg"></i>
+                        <i class="fab fa-instagram icon-lg"></i>
                     </a>
                 </div>
             </div>
@@ -77,5 +79,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{% static 'core/scripts.js' %}"></script>
 </body>
 </html>
