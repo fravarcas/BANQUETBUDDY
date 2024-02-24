@@ -1,0 +1,14 @@
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    background-color: #02483E;
+    color: white;
+}
+.text-lg {
+    font-size: 17px;
+}
+.icon-lg{
+    font-size: 24px;
+}
