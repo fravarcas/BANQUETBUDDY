@@ -82,7 +82,7 @@ DATABASES = {
         'PASSWORD': 'ispp',
         'HOST': 'localhost',
         'PORT': '5432',
-    }
+    },
 }
 
 
