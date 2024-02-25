@@ -1,0 +1,45 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+<body>
+    <div style="display: flex; justify-content: space-around; align-items: center; margin: 20px;">
+        <div style="background-color: #f9f9f9; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: transform 0.2s;">
+            <h2 style="font-size: 24px; margin-bottom: 10px;">Basic</h2>
+            <p class="price" style="font-size: 20px; margin-bottom: 20px;">9.99€<span>/mes</span></p>
+            <ul style="list-style: none; padding: 0; margin-bottom: 20px;">
+                <li style="font-size: 16px; margin-bottom: 10px;">Company Publication</li>
+                <li style="font-size: 16px; margin-bottom: 10px;">Chat with Customers</li>
+                <li style="font-size: 16px; margin-bottom: 10px;">Insights Panel</li>
+            </ul>
+            <button type="button" style="background-color: #007bff; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; font-size: 16px; cursor: pointer;">Empezar</button>
+        </div>
+
+        <div style="background-color: #f9f9f9; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: transform 0.2s;">
+            <h2 style="font-size: 24px; margin-bottom: 10px;">Premium</h2>
+            <p class="price" style="font-size: 20px; margin-bottom: 20px;">19.99€<span>/mes</span></p>
+            <ul style="list-style: none; padding: 0; margin-bottom: 20px;">
+                <li style="font-size: 16px; margin-bottom: 10px;">Company Publication</li>
+                <li style="font-size: 16px; margin-bottom: 10px;">Chat with Customers</li>
+                <li style="font-size: 16px; margin-bottom: 10px;">Calendar of Events</li>
+                <li style="font-size: 16px; margin-bottom: 10px;">Task Management</li>
+                <li style="font-size: 16px; margin-bottom: 10px;">Reports and Proposals</li>
+            </ul>
+            <button type="button" style="background-color: #007bff; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; font-size: 16px; cursor: pointer;">Empezar</button>
+        </div>
+
+        <div style="background-color: #f9f9f9; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: transform 0.2s;">
+            <h2 style="font-size: 24px; margin-bottom: 10px;">Pro</h2>
+            <p class="price" style="font-size: 30px; margin-bottom: 20px;">29.99€<span>/month</span></p>
+            <ul style="list-style-type: circle; font-size: 20px; margin-bottom: 20px;">
+                <li style="font-size: 16px; margin-bottom: 10px;">Company Publication</li>
+                <li style="font-size: 16px; margin-bottom: 10px;">Chat with Customers</li>
+                <li style="font-size: 16px; margin-bottom: 10px;">Calendar of Events</li>
+                <li style="font-size: 16px; margin-bottom: 10px;">Task Management</li>
+                <li style="font-size: 16px; margin-bottom: 10px;">Reports and Proposals</li>
+                <li style="font-size: 16px; margin-bottom: 10px;">Employee hiring</li>
+            </ul>
+            <button type="button" style="background-color: #007bff; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; font-size: 16px; cursor: pointer;">Empezar</button>
+        </div>
+    </div>
+{% endblock %}

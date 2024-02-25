@@ -5,3 +5,6 @@ def home(request):
 
 def about_us(request):
     return render(request, 'core/aboutus.html')
+
+def subscription_plans(request):
+    return render(request, 'core/subscriptionsplans.html')
