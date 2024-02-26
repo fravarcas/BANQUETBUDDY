@@ -6,7 +6,7 @@ from core.views import *
 urlpatterns = [
     path('', home, name='home'),
     path('about-us', about_us, name='about_us'),
-    path('subscription-plans', about_us, name='subscription_plans')
+    path('subscription-plans', subscription_plans, name='subscription_plans'),
     path('preguntas-rapidas', faq, name='faq')
 
 ]
