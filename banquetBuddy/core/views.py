@@ -23,15 +23,14 @@ def register_particular(request):
         particular_form = ParticularForm(request.POST)
 
         if user_form.is_valid() and particular_form.is_valid():
-            # Crear el usuario
+            
             user = user_form.save()
 
-            # Crear el perfil particular asociado
             particular_profile = particular_form.save(commit=False)
             particular_profile.user = user
             particular_profile.save()
 
-            # Redirigir a la página de registro exitoso u otra página
+            
             return redirect('registro_exitoso')
 
     else:
@@ -39,3 +38,25 @@ def register_particular(request):
         particular_form = ParticularForm()
 
     return render(request, 'core/registro_particular.html', {'user_form': user_form, 'particular_form': particular_form})
+
+def register_employee(request):
+    if request.method == 'POST':
+        user_form = UserCreationForm(request.POST)
+        employee_form = EmployeeForm(request.POST)
+
+        if user_form.is_valid() and employee_form.is_valid():
+            
+            user = user_form.save()
+
+            employee_profile = employee_form.save(commit=False)
+            employee_profile.user = user
+            employee_profile.save()
+            
+            return redirect('registro_exitoso')
+
+    else:
+        user_form = UserCreationForm()
+        employee_form = EmployeeForm()
+
+    return render(request, 'core/registro_empleado.html', {'user_form': user_form, 'employee_form': employee_form})
+
