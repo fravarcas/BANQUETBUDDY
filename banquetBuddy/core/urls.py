@@ -10,6 +10,7 @@ urlpatterns = [
     path('subscription-plans', subscription_plans, name='subscription_plans'),
     path('faq', faq, name='faq'),
     path('register_particular',register_particular,name='register_particular'),
-    path('register_employee',register_employee,name='register_employee')
+    path('register_employee',register_employee,name='register_employee'),
+    path('register_company',register_company,name='register_company')
 
 ]

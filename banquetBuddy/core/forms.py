@@ -11,7 +11,7 @@ class ParticularForm(forms.ModelForm):
 class CateringCompanyForm(forms.ModelForm):
     class Meta:
         model = CateringCompany
-        fields = ['name', 'phone_number', 'service_description', 'cuisine_type', 'is_verified', 'price_plan']
+        fields = ['name', 'phone_number', 'service_description']
 
 class EmployeeForm(forms.ModelForm):
     class Meta:

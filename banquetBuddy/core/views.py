@@ -60,3 +60,23 @@ def register_employee(request):
 
     return render(request, 'core/registro_empleado.html', {'user_form': user_form, 'employee_form': employee_form})
 
+def register_company(request):
+    if request.method == 'POST':
+        user_form = UserCreationForm(request.POST)
+        company_form = CateringCompanyForm(request.POST)
+
+        if user_form.is_valid() and company_form.is_valid():
+            
+            user = user_form.save()
+
+            company_profile = company_form.save(commit=False)
+            company_profile.user = user
+            company_profile.save()
+            
+            return redirect('registro_exitoso')
+
+    else:
+        user_form = UserCreationForm()
+        company_form = CateringCompanyForm()
+
+    return render(request, 'core/registro_company.html', {'user_form': user_form, 'company_form': company_form})
