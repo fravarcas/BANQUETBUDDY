@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+  <h2>Registro para Particulares</h2>
+    <form method="post" action="{% url 'register_particular' %}">
+      <button type="submit"></button>
+      {% csrf_token %}
+    
+      <!-- Formulario de usuario -->
+      {{ user_form.as_p }}
+    
+      <!-- Formulario de perfil particular -->
+      {{ particular_form.as_p }}
+
+      
+    </form>
+{% endblock %}
