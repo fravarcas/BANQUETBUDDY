@@ -6,7 +6,7 @@ from .models import Particular, CateringCompany, Employee
 class ParticularForm(forms.ModelForm):
     class Meta:
         model = Particular
-        fields = ['phone_number', 'preferences', 'address', 'is_subscribed']
+        fields = ['phone_number', 'preferences', 'address']
 
 class CateringCompanyForm(forms.ModelForm):
     class Meta:
