@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 def home(request):
     return render(request, 'core/home.html')
@@ -14,3 +14,7 @@ def faq(request):
 
 def contact(request):
     return render(request, 'core/contact.html')
+
+def logout_view(request):
+    #return render(request, 'core/home.html')
+    return redirect('/')
