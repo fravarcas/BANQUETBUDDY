@@ -40,6 +40,11 @@
                     </button>
                     <input class="form-control mr-sm-2 search-bar" type="search" placeholder="Search" aria-label="Search" id="search-input">
                 </form>
+                {% if request.user.is_authenticated %}
+                    <a href="{% url 'profile' %}">
+                        <i class="fas fa-user"></i>
+                    </a>
+                {% endif %}
             </div>
             
         </nav>

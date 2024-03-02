@@ -37,3 +37,8 @@ def login_view(request):
         form = EmailAuthenticationForm()
     # Renderiza la plantilla de inicio de sesión con el formulario
     return render(request, 'core/login.html', {'form': form})
+
+def profile_view(request):
+    context = {}
+    context['user'] = request.user
+    return render(request, 'core/profile.html', context)
