@@ -1,12 +1,14 @@
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
 from enum import Enum
 from phonenumber_field.modelfields import PhoneNumberField
 
 
 # Create your models here.
 
+class CustomUser(AbstractUser):
+    email = models.EmailField(unique=True)
 
 class AssignmentState(models.TextChoices):
     PENDING = 'PENDING', 'Pending'
@@ -36,14 +38,14 @@ class BookingState(models.TextChoices):
 
 
 class Particular(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, related_name='ParticularUsername')
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True, related_name='ParticularUsername')
     phone_number = PhoneNumberField()
     preferences = models.TextField(blank=True)
     address = models.TextField(blank=True)
     is_subscribed = models.BooleanField(default=False)
 
 class CateringCompany(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, related_name='CateringCompanyusername')
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True, related_name='CateringCompanyusername')
     name = models.CharField(max_length=255)
     phone_number = PhoneNumberField()
     service_description = models.TextField(blank=True)
@@ -53,7 +55,7 @@ class CateringCompany(models.Model):
     price_plan = models.CharField(max_length=50, choices=PricePlan.choices)  
 
 class Employee(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, related_name='EmployeeUsername')
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True, related_name='EmployeeUsername')
     phone_number = PhoneNumberField()
     profession = models.CharField(max_length=255)
     experience = models.CharField(max_length=255)
@@ -63,8 +65,8 @@ class Employee(models.Model):
     recommendation_letter = models.BinaryField(blank=True, null=True)
 
 class Message(models.Model):
-    sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='message_sender')
-    receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='message_receiver')
+    sender = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='message_sender')
+    receiver = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='message_receiver')
     date = models.DateField()
     content = models.TextField()
 
