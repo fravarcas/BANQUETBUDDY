@@ -10,11 +10,10 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'banquetBuddy.settings')
 django.setup()
 
 from faker import Faker
-from core.models import (Particular, CateringCompany, Employee, Message,
+from core.models import (CustomUser, Particular, CateringCompany, Employee, Message,
                           CateringService, Event, Task, Menu, Review,
                           EmployeeWorkService, Offer, JobApplication, TaskEmployee)
 from random import randint, choice
-from django.contrib.auth.models import User
 
 faker = Faker(['es_ES'])
 faker.add_provider(person)
@@ -27,7 +26,7 @@ def truncate_all_tables():
     models_to_truncate = [
         Particular, CateringCompany, Employee, Message,
         CateringService, Event, Task, Menu, Review,
-        EmployeeWorkService, Offer, JobApplication, TaskEmployee, User
+        EmployeeWorkService, Offer, JobApplication, TaskEmployee, CustomUser
     ]
     for model1 in models_to_truncate:
         model1.objects.all().delete()
@@ -66,7 +65,7 @@ user_list =[
 
 def create_particulars(num_particulars):
     for _ in range(num_particulars):
-        user = User.objects.create(username=user_list[_],password = user_list[_], email=user_list[_]+"@gmail.com")
+        user = CustomUser.objects.create_user(username=user_list[_],password = user_list[_], email=user_list[_]+"@gmail.com")
         num_preferences = random.randint(1, 3)
         Particular.objects.create(
             user=user,
@@ -122,14 +121,14 @@ cuisine_types = [
         ["Tradicional"],
         ["Gourmet"],
         ["Asiática"],
-        ["Mariscos y pescados"],
+        ["MaWaiting for pgAdmin 4 to start...riscos y pescados"],
         ["Casera"],
         ["Repostería"]
     ]
 def create_catering_companies():
     i=0
     for i in range(7):
-        user = User.objects.create(username=catering_names[i],password =catering_names[i],  email=catering_names[1]+str(i)+"@gmail.com")
+        user = CustomUser.objects.create_user(username=catering_names[i],password =catering_names[i],  email=catering_names[1]+str(i)+"@gmail.com")
         catering_company = CateringCompany.objects.create(
             user=user,
             name=catering_names[i],
@@ -215,7 +214,7 @@ employee_data = [
 
 def create_employees(num_employees):
     for _ in range(num_employees):
-        user = User.objects.create(username=employee_data[_]['username'], password= employee_data[_]['password'],email=faker.email())
+        user = CustomUser.objects.create_user(username=employee_data[_]['username'], password= employee_data[_]['password'],email=faker.email())
         Employee.objects.create(
             user=user,
             phone_number=faker.phone_number(),
