@@ -42,3 +42,26 @@ def profile_view(request):
     context = {}
     context['user'] = request.user
     return render(request, 'core/profile.html', context)
+
+def profile_edit_view(request):
+    context = {}
+    context['user'] = request.user
+
+    if request.method == 'POST':
+        email = request.POST.get('email', '')
+        username = request.POST.get('username', '')
+        first_name = request.POST.get('first_name', '')
+        last_name = request.POST.get('last_name', '')
+
+        user = request.user
+        
+        user.email = email
+        user.first_name = first_name
+        user.username = username
+        user.last_name = last_name
+
+        user.save()
+
+        return redirect('profile')
+
+    return render(request, 'core/profile_edit.html', context)

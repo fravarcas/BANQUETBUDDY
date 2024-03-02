@@ -11,4 +11,5 @@ urlpatterns = [
     path('faq', faq, name='faq'),
     path('login', login_view, name='login'),
     path('profile', profile_view, name='profile'),
+    path('profile-edit', profile_edit_view, name='profile_edit'),
 ]
