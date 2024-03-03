@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 from .forms import EmailAuthenticationForm
 from django.contrib.auth import authenticate, login
+from django.http import HttpResponse
+from .models import CustomUser
+from django.contrib import messages
 
 def home(request):
     return render(request, 'core/home.html')
@@ -53,8 +56,26 @@ def profile_edit_view(request):
         first_name = request.POST.get('first_name', '')
         last_name = request.POST.get('last_name', '')
 
+        # Pasar valores al contexto
+        context['email'] = email
+        context['username'] = username
+        context['first_name'] = first_name
+        context['last_name'] = last_name
+
+        # Validaciones
+        if not (email and username and first_name and last_name):
+            messages.error(request, 'Completa todos los campos')
+            return render(request, 'core/profile_edit.html', context)
+
+        if CustomUser.objects.filter(email=email).exclude(username=request.user.username).exists():
+            messages.error(request, 'El correo electrónico ya está en uso')
+            return render(request, 'core/profile_edit.html', context)
+
+        if CustomUser.objects.filter(username=username).exclude(username=request.user.username).exists():
+            messages.error(request, 'El nombre de usuario ya está en uso')
+            return render(request, 'core/profile_edit.html', context)
+
         user = request.user
-        
         user.email = email
         user.first_name = first_name
         user.username = username
