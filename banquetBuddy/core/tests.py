@@ -1,6 +1,7 @@
 from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth import get_user_model
+from .models import CustomUser
 
 class LoginViewTests(TestCase):
     def setUp(self):
@@ -35,3 +36,21 @@ class LoginViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'core/login.html')
         self.assertFalse(self.client.session.get('_auth_user_id'))
+
+class LogoutViewTest(TestCase):
+    def setUp(self):
+        self.user = CustomUser.objects.create_user(username='testuser', password='testpassword')
+
+    def test_logout_view(self):
+        self.client.login(username='testuser', password='testpassword')
+
+        response = self.client.get(reverse('logout'))
+
+        self.assertEqual(response.status_code, 302)
+
+        self.assertFalse(response.wsgi_request.user.is_authenticated)
+
+        self.assertRedirects(response, reverse('home'))
+
+    def tearDown(self):
+        self.user.delete()
