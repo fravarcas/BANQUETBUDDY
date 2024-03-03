@@ -80,3 +80,7 @@ def register_company(request):
         company_form = CateringCompanyForm()
 
     return render(request, 'core/registro_company.html', {'user_form': user_form, 'company_form': company_form})
+
+
+def elegir_registro(request):
+    return render(request, 'core/elegir_registro.html')
