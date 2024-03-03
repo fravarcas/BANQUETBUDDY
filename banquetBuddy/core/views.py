@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from .forms import EmailAuthenticationForm
-from django.contrib.auth import authenticate, login
-from django.http import HttpResponse
+from django.contrib.auth import authenticate, login, logout
 from .models import CustomUser
 from django.contrib import messages
+
 
 def home(request):
     return render(request, 'core/home.html')
@@ -40,6 +40,10 @@ def login_view(request):
         form = EmailAuthenticationForm()
     # Renderiza la plantilla de inicio de sesión con el formulario
     return render(request, 'core/login.html', {'form': form})
+  
+def logout_view(request):
+    logout(request)
+    return redirect('/')
 
 def profile_view(request):
     context = {}
@@ -86,3 +90,4 @@ def profile_edit_view(request):
         return redirect('profile')
 
     return render(request, 'core/profile_edit.html', context)
+
