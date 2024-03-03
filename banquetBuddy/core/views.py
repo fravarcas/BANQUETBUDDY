@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import EmailAuthenticationForm
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login
 
 def home(request):
     return render(request, 'core/home.html')
@@ -17,10 +17,6 @@ def faq(request):
 def contact(request):
     return render(request, 'core/contact.html')
 
-def logout_view(request):
-    logout(request) 
-    return redirect('/')
-
 def login_view(request):
     if request.user.is_authenticated:
         return redirect('/')
@@ -33,7 +29,11 @@ def login_view(request):
             user = authenticate(request, username=email, password=password)
             if user is not None:
                 login(request, user)
+                # Redireccionar a la página de inicio o a otra página deseada
                 return redirect('/')
+        # Si el formulario no es válido, renderiza el formulario con los errores
     else:
+        # Si la solicitud no es POST, crea un nuevo formulario vacío
         form = EmailAuthenticationForm()
+    # Renderiza la plantilla de inicio de sesión con el formulario
     return render(request, 'core/login.html', {'form': form})
