@@ -35,12 +35,28 @@ header {
 }
 /* FOOTER */
 .footer {
-    position: fixed;
+    display: fixed;
     bottom: 0;
     width: 100%;
     padding: 20px;
     background-color: #02483E;
     color: white;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Garantiza que el cuerpo ocupe al menos el 100% de la altura de la ventana */
+}
+
+main {
+    flex: 1; /* Hace que el contenido principal ocupe el espacio restante */
 }
 .text-lg {
     font-size: 17px;
