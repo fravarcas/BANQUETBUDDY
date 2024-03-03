@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
-from .forms import ParticularForm, CateringCompanyForm, EmployeeForm
+from .forms import ParticularForm, CateringCompanyForm, EmployeeForm, StyledUserCreationForm
 
 def home(request):
     return render(request, 'core/home.html')
@@ -31,10 +31,10 @@ def register_particular(request):
             particular_profile.save()
 
             
-            return redirect('registro_exitoso')
+            return redirect('home')
 
     else:
-        user_form = UserCreationForm()
+        user_form = StyledUserCreationForm()
         particular_form = ParticularForm()
 
     return render(request, 'core/registro_particular.html', {'user_form': user_form, 'particular_form': particular_form})
@@ -52,10 +52,10 @@ def register_employee(request):
             employee_profile.user = user
             employee_profile.save()
             
-            return redirect('registro_exitoso')
+            return redirect('home')
 
     else:
-        user_form = UserCreationForm()
+        user_form = StyledUserCreationForm()
         employee_form = EmployeeForm()
 
     return render(request, 'core/registro_empleado.html', {'user_form': user_form, 'employee_form': employee_form})
@@ -73,7 +73,7 @@ def register_company(request):
             company_profile.user = user
             company_profile.save()
             
-            return redirect('registro_exitoso')
+            return redirect('home')
 
     else:
         user_form = UserCreationForm()
