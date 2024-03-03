@@ -121,7 +121,7 @@ cuisine_types = [
         ["Tradicional"],
         ["Gourmet"],
         ["Asiática"],
-        ["Mariscos y pescados"],
+        ["MaWaiting for pgAdmin 4 to start...riscos y pescados"],
         ["Casera"],
         ["Repostería"]
     ]

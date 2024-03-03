@@ -89,9 +89,6 @@ DATABASES = {
 }
 
 
-AUTHENTICATION_BACKENDS = ['core.backends.EmailBackend']
-AUTH_USER_MODEL = 'core.CustomUser'
-
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
